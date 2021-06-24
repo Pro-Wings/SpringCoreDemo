@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/p">
+    <!-- more bean definitions for services go here -->
+    <!-- this is our beans -->
+<bean class="com.pro.wings.Address" name="addr1">
+    <property name="city" value="Pune" />
+    <property name="house" value="ABIL House" />
+    <property name="pin" value="1234" />
+</bean>
+
+    <bean class="com.pro.wings.Student" name="student1">
+        <property name="studentId" value="123" />
+        <property name="studentName" value="Ram" />
+        <property name="studentAddress">
+            <ref bean="addr1" />
+        </property>
+        <property name="subjects" >
+            <list>
+                <value>Maths</value>
+                <value>English</value>
+            </list>
+        </property>
+        <property name="marks" >
+            <list>
+                <value>30</value>
+                <value>60</value>
+                <value>60</value>
+                <null />
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="AAA" value="123" />
+                <entry key="BBB" value="123" />
+                <entry key="EEE" value="123" />
+            </map>
+        </property>
+    </bean>
+    <bean class="com.pro.wings.Student" name="student2">
+        <property name="studentId" value="234" />
+        <property name="studentName" value="Sham" />
+        <property name="studentAddress">
+            <ref bean="addr1" />
+        </property>
+        <property name="subjects" >
+            <list>
+                <value>Grammer</value>
+                <value>Statastics</value>
+            </list>
+        </property>
+    </bean>
+</beans>
