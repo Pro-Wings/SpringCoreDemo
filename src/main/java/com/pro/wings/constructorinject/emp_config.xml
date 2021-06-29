@@ -10,15 +10,13 @@
 http://www.springframework.org/schema/p">
     <!-- more bean definitions for services go here -->
     <!-- this is our beans -->
-<!--
+    <context:annotation-config />
     <bean class="com.pro.wings.Address" name="addr1">
         <property name="city" value="Pune" />
         <property name="house" value="ABIL House" />
         <property name="pin" value="1234" />
     </bean>
--->
-
-    <bean name="emp1" class="com.pro.wings.constructorinject.Employee">
+    <bean name="emp1" class="com.pro.wings.constructorinject.Employee" autowire="constructor" >
         <constructor-arg value="123" type="int"  />
         <constructor-arg value="Ram" />
         <constructor-arg value="Pune" />

@@ -1,15 +1,18 @@
 package com.pro.wings.constructorinject;
 
 import com.pro.wings.Address;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-
+@Component
 public class Employee {
 
     private int eid;
-    //private Address empAdd; //dependency injection via constructor
+    @Autowired
+    private Address empAdd; //dependency injection via constructor
     private String name;
-    private String addr;
     private String lname;
 
     public Employee(int eid, String name) {
@@ -17,21 +20,47 @@ public class Employee {
         this.name = name;
     }
 
-    public Employee(int eid, String addr, String lname) {
-        System.out.println("constructor 1 invoked!!!");
+    public Employee(int eid, Address empAdd, String name, String lname) {
+        System.out.println("constructor called!!!");
         this.eid = eid;
-        this.addr = addr;
-        this.lname = lname;
-    }
-
-    public Employee(String name, String addr, String lname) {
-        System.out.println("constructor 2 invoked!!!");
+        this.empAdd = empAdd;
         this.name = name;
-        this.addr = addr;
         this.lname = lname;
     }
 
     public Employee() {
+    }
+
+    public int getEid() {
+        return eid;
+    }
+
+    public void setEid(int eid) {
+        this.eid = eid;
+    }
+
+    public Address getEmpAdd() {
+        return empAdd;
+    }
+
+    public void setEmpAdd(Address empAdd) {
+        this.empAdd = empAdd;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     @PostConstruct
@@ -44,8 +73,9 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "eid=" + eid +
+                ", empAdd=" + empAdd +
                 ", name='" + name + '\'' +
-                ", addr='" + addr + '\'' +
+                ", lname='" + lname + '\'' +
                 '}';
     }
 }
